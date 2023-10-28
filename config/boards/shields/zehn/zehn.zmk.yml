@@ -1,10 +1,10 @@
 file_format: "1"
-id: elle
-name: _elle
+id: zehn
+name: _zehn
 type: shield
 requires: [pro_micro]
 features:
   - keys
 siblings:
-  - elle_left
-  - elle_right
+  - zehn_left
+  - zehn_right

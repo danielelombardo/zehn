@@ -15,8 +15,8 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: elle_left
+    shield: zehn_left
   - board: nice_nano_v2
-    shield: elle_right
+    shield: zehn_right
   # - board: nice_nano_v2
   #   shield: settings_reset

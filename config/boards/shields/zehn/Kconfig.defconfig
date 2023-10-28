@@ -4,19 +4,19 @@ config ZMK_BLE
 config ZMK_USB
 	default y
 
-if SHIELD_ELLE_LEFT
+if SHIELD_ZEHN_LEFT
 
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
 
-endif # SHIELD_ELLE_LEFT
+endif # SHIELD_ZEHN_LEFT
 
-if SHIELD_ELLE_LEFT || SHIELD_ELLE_RIGHT
+if SHIELD_ZEHN_LEFT || SHIELD_ZEHN_RIGHT
 
 config ZMK_KEYBOARD_NAME
-	default "_elle"
+	default "_zehn"
 
 config ZMK_SPLIT
 	default y
 
-endif # SHIELD_ELLE_LEFT || SHIELD_ELLE_RIGHT
+endif # SHIELD_ZEHN_LEFT || SHIELD_ZEHN_RIGHT
