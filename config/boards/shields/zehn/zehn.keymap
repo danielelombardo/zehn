@@ -10,14 +10,14 @@
 / { 
     behaviors {
         mtg: mom_tog_layers { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOG_LAYERS"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; };
-        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>;      mods = <(MOD_LSFT|MOD_RSFT|MOD_LGUI|MOD_RGUI)>; };
+        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>;      mods = <(MOD_LSFT|MOD_RSFT)>; };
         lrpar:   lpar_rpar  { compatible = "zmk,behavior-mod-morph"; label = "LPAR_RPAR";  #binding-cells = <0>; bindings = <&kp LPAR>, <&kp RPAR>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
         lrbkt:   lbkt_rbkt  { compatible = "zmk,behavior-mod-morph"; label = "LBKT_RBKT";  #binding-cells = <0>; bindings = <&kp LBKT>, <&kp RBKT>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
         lrbrc:   lbrc_rbrc  { compatible = "zmk,behavior-mod-morph"; label = "LBRC_RBRC";  #binding-cells = <0>; bindings = <&kp LBRC>, <&kp RBRC>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
         atexc:   at_excl    { compatible = "zmk,behavior-mod-morph"; label = "AT_EXCL";    #binding-cells = <0>; bindings = <&kp AT>,   <&kp EXCL>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
         ampstar: amps_star  { compatible = "zmk,behavior-mod-morph"; label = "AMPS_STAR";  #binding-cells = <0>; bindings = <&kp AMPS>, <&kp STAR>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
+        hashtil: hash_tilde { compatible = "zmk,behavior-mod-morph"; label = "HASH_TILDE"; #binding-cells = <0>; bindings = <&kp HASH>, <&kp TILDE>;    mods = <(MOD_LSFT|MOD_RSFT)>; };
         btset:   bluetooths { compatible = "zmk,behavior-mod-morph"; label = "BLUETOOTHS"; #binding-cells = <0>; bindings = <&bt BT_NXT>, <&bt BT_CLR>; mods = <(MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LCTL|MOD_RCTL)>; };
-        h2k: copy_paste { compatible = "zmk,behavior-hold-tap"; label = "COPY_PASTE"; #binding-cells = <2>; tapping-term-ms = <200>; flavor = "balanced"; bindings = <&kp>, <&kp>; };
     };
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
@@ -44,9 +44,9 @@
 
         num {
             bindings = <
-                &kp BSLH  &kp N9  &kp N8       &kp N7         &kp N1  &kp N2  &kp N3  &kp N0 
-                &ampstar  &lrpar  &lrbkt       &lrbrc         &kp N4  &kp N5  &kp N6  &kp NUHS 
-                                  &lt 4 EQUAL  &sk LSHFT      &none  &none 
+                &kp BSLH  &kp N9  &kp N8    &kp N7         &kp N1  &kp N2  &kp N3  &kp EQUAL 
+                &ampstar  &lrpar  &lrbkt    &lrbrc         &kp N4  &kp N5  &kp N6  &hashtil 
+                                  &lt 4 N0  &sk LSHFT      &none  &none 
             >;
         };
 
@@ -60,17 +60,24 @@
 
         ctr {
             bindings = <
-                &h2k C V  &kp ESC    &sk LSHFT  &sk LCTRL        &kp CAPS   &caps_word    &kp PSCRN   &kp C_VOL_UP 
-                &kp TAB   &rls_mods  &sk LALT   &sk LGUI         &btset     &bt BT_SEL 1  &kp C_MUTE  &kp C_VOL_DN 
-                                     &none      &none            &none      &mtg 5 5 
+                &sl 5    &kp ESC    &sk LSHFT  &sk LCTRL       &kp CAPS   &caps_word    &key_repeat  &kp C_VOL_UP 
+                &kp TAB  &rls_mods  &sk LALT   &sk LGUI        &btset     &bt BT_SEL 1  &kp C_MUTE   &kp C_VOL_DN 
+                                    &none      &none           &kp PSCRN  &mtg 6 6 
+            >;
+        };
+        shc {
+            bindings = <
+                &kp Z    &kp X     &kp C     &kp V     &kp B      &kp J   &kp K      &kp P 
+                &kp Y    &kp SEMI  &kp F     &kp G     &kp MINUS  &atexc  &kp SLASH  &kp COMMA 
+                                   &none     &none     &none      &none 
             >;
         };
 
         fun {
             bindings = <
-                &none  &kp F9   &kp F8   &kp F7       &kp F1  &kp F2  &kp F3  &none 
-                &none  &kp F12  &kp F11  &kp F10      &kp F4  &kp F5  &kp F6  &none
-                                &to 0    &none        &none   &tog 5 
+                &none  &kp F9   &kp F8   &kp F7       &kp F1  &kp F2  &kp F3  &kp C_BRI_INC 
+                &none  &kp F12  &kp F11  &kp F10      &kp F4  &kp F5  &kp F6  &kp C_BRI_DEC 
+                                &to 0    &none        &none   &tog 6 
             >;
         };
     };
