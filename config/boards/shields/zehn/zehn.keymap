@@ -3,21 +3,28 @@
 #include <dt-bindings/zmk/bt.h>
 
 &caps_word { continue-list = <MINUS UNDERSCORE BKSP DEL LEFT RIGHT DOT COMMA SEMI SLASH>; };
-&sk { release-after-ms = <2000>; quick-release; ignore-modifiers; };
-&lt { tapping-term-ms = <200>; };
+&sk { release-after-ms = <3000>; quick-release; ignore-modifiers; };
+&sl { release-after-ms = <3000>; };
+&lt { tapping-term-ms = <300>; };
 
+#define A1 0
+#define NU 1
+#define A2 2
+#define SY 3
+#define FU 4
+#define SC 5
+#define NV 6
+#define OS 7
+#define BT 8
 
-/ { 
+/{
     behaviors {
-        mtg: mom_tog_layers { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOG_LAYERS"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; };
-        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>;      mods = <(MOD_LSFT|MOD_RSFT)>; };
-        lrpar:   lpar_rpar  { compatible = "zmk,behavior-mod-morph"; label = "LPAR_RPAR";  #binding-cells = <0>; bindings = <&kp LPAR>, <&kp RPAR>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
-        lrbkt:   lbkt_rbkt  { compatible = "zmk,behavior-mod-morph"; label = "LBKT_RBKT";  #binding-cells = <0>; bindings = <&kp LBKT>, <&kp RBKT>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
-        lrbrc:   lbrc_rbrc  { compatible = "zmk,behavior-mod-morph"; label = "LBRC_RBRC";  #binding-cells = <0>; bindings = <&kp LBRC>, <&kp RBRC>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
-        atexc:   at_excl    { compatible = "zmk,behavior-mod-morph"; label = "AT_EXCL";    #binding-cells = <0>; bindings = <&kp AT>,   <&kp EXCL>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
-        ampstar: amps_star  { compatible = "zmk,behavior-mod-morph"; label = "AMPS_STAR";  #binding-cells = <0>; bindings = <&kp AMPS>, <&kp STAR>;     mods = <(MOD_LSFT|MOD_RSFT)>; };
-        hashtil: hash_tilde { compatible = "zmk,behavior-mod-morph"; label = "HASH_TILDE"; #binding-cells = <0>; bindings = <&kp HASH>, <&kp TILDE>;    mods = <(MOD_LSFT|MOD_RSFT)>; };
-        btset:   bluetooths { compatible = "zmk,behavior-mod-morph"; label = "BLUETOOTHS"; #binding-cells = <0>; bindings = <&bt BT_NXT>, <&bt BT_CLR>; mods = <(MOD_LSFT|MOD_RSFT|MOD_LALT|MOD_RALT|MOD_LCTL|MOD_RCTL)>; };
+        mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; }; 
+        mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
+        motg: mom_toggle_l  { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOGGLE_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; }; 
+        mokp: moml_kp       { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
+
+        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";    #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>;      mods = <(MOD_LSFT)>; }; 
     };
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
@@ -25,60 +32,78 @@
     };
  
     keymap {
-        compatible = "zmk,keymap";
+          compatible = "zmk,keymap";
         abc1 {
             bindings = <
-                &kp Q  &kp W  &kp E      &kp R       &kp U        &kp I        &kp O  &kp L 
-                &kp A  &kp S  &kp D      &kp T       &kp H        &kp N        &kp M  &kp Y 
-                              &lt 4 DOT  &bkspdel    &lt 2 ENTER  &lt 1 SPACE  
-            >;
-        };
-
-        abc2 {
-            bindings = <
-                &kp Z    &kp X     &kp C     &kp V         &kp B      &kp J   &kp K      &kp P 
-                &kp SQT  &kp SEMI  &kp F     &kp G         &kp MINUS  &atexc  &kp SLASH  &kp COMMA 
-                                   &mtg 4 3  &sk LSHFT     &none      &none 
+                &kp W  &kp A  &kp E  &kp R          &kp U  &kp I  &kp O  &kp L 
+                &kp F  &kp S  &kp D  &kp T          &kp N  &kp M  &kp H  &kp C 
+                      &key_repeat  &mosl NV A2   &lt OS SPACE  &sk LSHFT 
             >;
         };
 
         num {
             bindings = <
-                &kp BSLH  &kp N9  &kp N8    &kp N7         &kp N1  &kp N2  &kp N3  &kp EQUAL 
-                &ampstar  &lrpar  &lrbkt    &lrbrc         &kp N4  &kp N5  &kp N6  &hashtil 
-                                  &lt 4 N0  &sk LSHFT      &none  &none 
+                &none  &kp N1  &kp N2  &kp N3       &kp N7  &kp N8  &kp N9  &none 
+                &none  &kp N4  &kp N5  &kp N6       &sl A2  &sl SY  &none   &none 
+                       &key_repeat  &mokp NV N0    &to 0  &none 
+            >;
+         };
+
+        abc2 {
+            bindings = <
+                &kp Z    &kp V    &kp Y      &kp X         &kp B    &kp P     &kp K      &kp Q 
+                &kp SQT  &kp DQT  &kp MINUS  &kp G         &kp J    &kp SEMI  &kp COLON  &kp QMARK 
+                              &kp SLASH  &motg NV A2    &kp COMMA  &kp DOT 
+            >;
+        };
+
+        sym {
+            bindings = <
+                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL  &kp AT    &kp HASH  &kp BSLH 
+                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR  &kp AMPS  &kp PIPE  &kp TILDE 
+                                 &kp UNDER  &kp EQUAL      &kp PLUS  &kp GRAVE 
+            >;
+         };
+
+        fun {
+            bindings = <
+                &none  &kp F9   &kp F8   &kp F7       &kp F1  &kp F2  &kp F3  &none 
+                &none  &kp F12  &kp F11  &kp F10      &kp F4  &kp F5  &kp F6  &none 
+                                &none  &motg NV FU    &to 0   &to 0 
+            >;
+        };
+
+        shc {
+            bindings = <
+                &none        &kp LC(C)  &kp LG(C)  &kp LG(V)       &none  &none  &none  &none 
+                &kp LA(TAB)  &kp LC(V)  &none      &none           &none  &none  &none  &none 
+                                        &none  &motg NV SC         &to 0  &none 
             >;
         };
 
         nav {
             bindings = <
-                &kp INS  &kp ESC    &kt LSHFT  &kt LCTRL       &kp HOME   &kp UP    &kp END    &kp PG_UP 
-                &kp TAB  &rls_mods  &kt LALT   &kt LGUI        &kp LEFT   &kp DOWN  &kp RIGHT  &kp PG_DN 
-                                    &mtg 4 3   &bkspdel        &kp ENTER  &kp SPACE 
+                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT         &kp HOME   &kp UP    &kp END    &kp PG_UP 
+                &kp TAB    &tog SC    &none     &sl OS           &kp LEFT   &kp DOWN  &kp RIGHT  &kp PG_DN 
+                                        &kp SPACE  &to 0     &bkspdel  &kp ENTER 
             >;
         };
 
-        ctr {
+        osm {
             bindings = <
-                &sl 5    &kp ESC    &sk LSHFT  &sk LCTRL       &kp CAPS   &caps_word    &key_repeat  &kp C_VOL_UP 
-                &kp TAB  &rls_mods  &sk LALT   &sk LGUI        &btset     &bt BT_SEL 1  &kp C_MUTE   &kp C_VOL_DN 
-                                    &none      &none           &kp PSCRN  &mtg 6 6 
-            >;
-        };
-        shc {
-            bindings = <
-                &kp Z    &kp X     &kp C     &kp V     &kp B      &kp J   &kp K      &kp P 
-                &kp Y    &kp SEMI  &kp F     &kp G     &kp MINUS  &atexc  &kp SLASH  &kp COMMA 
-                                   &none     &none     &none      &none 
+                &kt LSHFT   &kt LCTRL  &kt LGUI   &kt LALT       &sl NU   &mosl SY SY  &to NU     &to BT 
+                &caps_word  &rls_mods  &kp CAPS   &to NV         &kp INS  &kp SPACE    &kp PSCRN  &to FU 
+                                        &kp ESC   &kp TAB      &to 0  &none 
             >;
         };
 
-        fun {
+        btp {
             bindings = <
-                &none  &kp F9   &kp F8   &kp F7       &kp F1  &kp F2  &kp F3  &kp C_BRI_INC 
-                &none  &kp F12  &kp F11  &kp F10      &kp F4  &kp F5  &kp F6  &kp C_BRI_DEC 
-                                &to 0    &none        &none   &tog 6 
+                &none  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 
+                &none  &kp C_BRI_DN  &none       &kp C_BRI_UP         &none         &bt BT_CLR    &none         &none 
+                                                 &none  &to 0         &to 0  &none 
             >;
         };
+
     };
 };
