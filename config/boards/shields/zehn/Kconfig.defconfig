@@ -2,7 +2,7 @@ config ZMK_BLE
 	default y
 
 
-if SHIELD_ZEHN_LEFT
+if SHIELD_ZEHN_RIGHT
 
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
 	default y
@@ -10,7 +10,7 @@ config ZMK_SPLIT_BLE_ROLE_CENTRAL
 config ZMK_KEYBOARD_NAME
 	default "_zehn"
 
-endif # SHIELD_ZEHN_LEFT
+endif # SHIELD_ZEHN_RIGHT
 
 
 if SHIELD_ZEHN_LEFT || SHIELD_ZEHN_RIGHT
