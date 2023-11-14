@@ -8,7 +8,7 @@ config ZMK_USB
 if SHIELD_ZEHN_LEFT
 
 config ZMK_KEYBOARD_NAME
-	default "_zehn_l"
+	default "_zehn"
 
 config ZMK_SPLIT
 	default y
