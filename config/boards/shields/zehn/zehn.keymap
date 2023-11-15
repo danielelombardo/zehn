@@ -23,6 +23,7 @@
         motg: mom_toggle_l  { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOGGLE_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; }; 
         mokp: moml_kp       { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&kp>, <&kp>; }; 
+        torp: togl_repeat   { compatible = "zmk,behavior-hold-tap"; label = "TOGL_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&tog>, <&key_repeat>; }; 
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL"; #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
     };
@@ -31,21 +32,28 @@
             bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>; };
     };
 
+    combos {
+        compatible = "zmk,combos";
+        combo_sym { timeout-ms = <50>; layers = <0 1>;   key-positions = <8 9>;   bindings = <&sl SY>; };
+        combo_num { timeout-ms = <50>; layers = <0 1 2>; key-positions = <18 19>; bindings = <&sl NU>; };
+        combo_nav { timeout-ms = <50>; layers = <5>;     key-positions = <18 19>; bindings = <&tog NV>; };
+    };
+
     keymap {
         compatible = "zmk,keymap";
         abc1 {
             bindings = <
                 &kp F  &kp S  &kp E  &kp R          &kp U  &kp I  &kp O  &kp L 
                 &kp A  &kp W  &kp D  &kp T          &kp N  &kp M  &kp H  &kp C 
-                      &key_repeat &mosl NV A2    &lt OS SPACE  &sk LSHFT 
+                      &torp FU X  &mosl NV A2    &lt OS SPACE  &sk LSHFT 
             >;
         };
 
         num {
             bindings = <
-                &kp PLUS   &kp N1  &kp N2  &kp N3        &kp N7  &kp N8  &kp N9  &none 
-                &kp UNDER  &kp N4  &kp N5  &kp N6        &sl A2  &sl SY  &none   &none 
-                            &key_repeat  &mokp NV N0    &to 0  &none 
+                &kp PLUS   &kp N1  &kp N2  &kp N3        &kp N7  &kp N8  &kp N9     &kp CAPS 
+                &kp EQUAL  &kp N4  &kp N5  &kp N6        &sl A2  &sl SY  &kp PSCRN  &caps_word 
+                            &key_repeat  &mokp NV N0     &tog NU  &none 
             >;
          };
 
@@ -59,15 +67,15 @@
 
         sym {
             bindings = <
-                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL  &kp AT    &kp HASH  &kp TILDE 
-                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR  &kp AMPS  &kp PIPE  &kp EQUAL 
-                                  &kp BSLH  &motg NV SY    &to 0  &kp GRAVE 
+                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL   &kp AT    &kp HASH  &kp TILDE 
+                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR   &kp AMPS  &kp PIPE   
+                                  &kp BSLH  &motg NV SY    &kp UNDER  &kp GRAVE 
             >;
          };
 
         fun {
             bindings = <
-                &none  &kp F1  &kp F2  &kp F3         &kp F7   &kp F8   &kp F9   &none 
+                &none  &kp F1  &kp F2  &kp F3         &kp F7   &kp F8   &kp F9   &to BT 
                 &none  &kp F4  &kp F5  &kp F6         &kp F10  &kp F11  &kp F12  &none 
                                &none   &motg NV FU    &to 0   &to 0 
             >;
@@ -83,8 +91,8 @@
 
         osm {
             bindings = <
-                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT       &sl NU  &sl SY  &to FU   &to BT 
-                &to NV     &rls_mods  &kp CAPS  &caps_word     &to NU  &to SY  &kp INS  &kp PSCRN 
+                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT       &sl NU  &sl SY  &to FU  &trans 
+                &trans     &rls_mods  &trans    &trans         &to NU  &to SY  &trans  &kp INS  
                                       &kp TAB   &kp ESC        &to 0   &none 
             >;
         };
