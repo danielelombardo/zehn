@@ -12,10 +12,9 @@
 #define A2 2
 #define SY 3
 #define FU 4
-#define SC 5
-#define NV 6
-#define OS 7
-#define BT 8
+#define NV 5
+#define OS 6
+#define BT 7
 
 / {
     behaviors {
@@ -23,6 +22,7 @@
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
         motg: mom_toggle_l  { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOGGLE_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; }; 
         mokp: moml_kp       { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
+        tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&kp>, <&kp>; }; 
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL"; #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
     };
@@ -43,9 +43,9 @@
 
         num {
             bindings = <
-                &none  &kp N1  &kp N2  &kp N3        &kp N7  &kp N8  &kp N9  &none 
-                &none  &kp N4  &kp N5  &kp N6        &sl A2  &sl SY  &none   &none 
-                        &key_repeat  &mokp NV N0    &to 0  &none 
+                &kp PLUS   &kp N1  &kp N2  &kp N3        &kp N7  &kp N8  &kp N9  &none 
+                &kp UNDER  &kp N4  &kp N5  &kp N6        &sl A2  &sl SY  &none   &none 
+                            &key_repeat  &mokp NV N0    &to 0  &none 
             >;
          };
 
@@ -59,9 +59,9 @@
 
         sym {
             bindings = <
-                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL  &kp AT    &kp HASH  &kp BSLH 
-                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR  &kp AMPS  &kp PIPE  &kp TILDE 
-                                 &kp UNDER  &kp EQUAL      &kp PLUS  &kp GRAVE 
+                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL  &kp AT    &kp HASH  &kp TILDE 
+                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR  &kp AMPS  &kp PIPE  &kp EQUAL 
+                                  &kp BSLH  &motg NV SY    &to 0  &kp GRAVE 
             >;
          };
 
@@ -73,27 +73,19 @@
             >;
         };
 
-        shc {
-            bindings = <
-                &none        &kp LC(C)  &kp LG(C)  &kp LG(V)       &none  &none  &none  &none 
-                &kp LA(TAB)  &kp LC(V)  &none      &none           &none  &none  &none  &none 
-                                        &none      &motg NV SC     &to 0  &none 
-            >;
-        };
-
         nav {
             bindings = <
-                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT         &kp HOME   &kp UP    &kp END    &kp PG_UP 
-                &kp TAB    &tog SC    &none     &sl OS           &kp LEFT   &kp DOWN  &kp RIGHT  &kp PG_DN 
+                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT       &kp HOME   &kp UP    &kp END    &kp PG_UP 
+                &kp TAB    &sl OS     &tkp X C  &tkp Z V       &kp LEFT   &kp DOWN  &kp RIGHT  &kp PG_DN 
                                         &kp SPACE  &to 0     &bkspdel  &kp ENTER 
             >;
         };
 
         osm {
             bindings = <
-                &kt LSHFT   &kt LCTRL  &kt LGUI   &kt LALT       &sl NU   &mosl SY SY  &to NU     &to BT 
-                &caps_word  &rls_mods  &kp CAPS   &to NV         &kp INS  &kp SPACE    &kp PSCRN  &to FU 
-                                        &kp ESC   &kp TAB      &to 0  &none 
+                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT       &sl NU  &sl SY  &to FU   &to BT 
+                &to NV     &rls_mods  &kp CAPS  &caps_word     &to NU  &to SY  &kp INS  &kp PSCRN 
+                                      &kp TAB   &kp ESC        &to 0   &none 
             >;
         };
 
