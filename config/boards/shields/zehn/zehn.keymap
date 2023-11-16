@@ -67,9 +67,9 @@
 
         sym {
             bindings = <
-                &BT(2)  &BT(0)  &kp C_VOL_UP  &kp C_BRI_UP     &kp LPAR  &kp LBKT  &kp LBRC  &kp LT         
-                &BT(3)  &BT(1)  &kp C_VOL_DN  &kp C_BRI_DN     &kp RPAR  &kp RBKT  &kp RBRC  &kp GT         
-                                &kp C_MUTE  &moto NV 0         &to 0  &bt BT_CLR 
+                BT(2)  BT(0)  &kp C_VOL_UP  &kp C_BRI_UP     &kp LPAR  &kp LBKT  &kp LBRC  &kp LT         
+                BT(3)  BT(1)  &kp C_VOL_DN  &kp C_BRI_DN     &kp RPAR  &kp RBKT  &kp RBRC  &kp GT         
+                              &kp C_MUTE  &moto NV 0         &to 0  &bt BT_CLR 
             >;
          };
 
