@@ -32,7 +32,7 @@
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_RSFT)>; }; 
         upins:   up_ins     { compatible = "zmk,behavior-mod-morph"; label = "UP_INS";     #binding-cells = <0>; bindings = <&kp UP>,    <&kp INS>;   mods = <(MOD_RSFT)>; }; 
-        homerst: home_rlsm  { compatible = "zmk,behavior-mod-morph"; label = "HOME_RLSM";  #binding-cells = <0>; bindings = <&kp HOME>,  <&rls_mods>; mods = <(MOD_RSFT)>; }; 
+        homerls: home_rlsm  { compatible = "zmk,behavior-mod-morph"; label = "HOME_RLSM";  #binding-cells = <0>; bindings = <&kp HOME>,  <&rls_mods>; mods = <(MOD_RSFT)>; }; 
         sktshft: sk_kt_shft { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_SHFT"; #binding-cells = <0>; bindings = <&sk LSHFT>, <&kt LSHFT>; mods = <(MOD_RSFT)>; }; 
         sktctrl: sk_kt_ctrl { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_CTRL"; #binding-cells = <0>; bindings = <&sk LCTRL>, <&kt LCTRL>; mods = <(MOD_RSFT)>; }; 
         sktgui:  sk_kt_gui  { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_GUI";  #binding-cells = <0>; bindings = <&sk LGUI>,  <&kt LGUI>;  mods = <(MOD_RSFT)>; }; 
@@ -83,8 +83,8 @@
 
         nav {
             bindings = <
-                &sktshft  &sktctrl  &sktgui  &sktalt     &home_rlsm  &upins    &tkp RSHFT END  &kp PG_UP 
-                &kp TAB   &tkp X C  &kp ESC  &tkp Z V    &kp LEFT    &kp DOWN  &kp RIGHT       &kp PG_DN 
+                &sktshft  &sktctrl  &sktgui  &sktalt     &homerls  &upins    &tkp RSHFT END  &kp PG_UP 
+                &kp TAB   &tkp X C  &kp ESC  &tkp Z V    &kp LEFT  &kp DOWN  &kp RIGHT       &kp PG_DN 
                                     &kp SPACE  &to 0     &bkspdel  &kp ENTER 
             >;
         };
