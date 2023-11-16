@@ -25,9 +25,9 @@
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
         
-        tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&kp>, <&kp>; }; 
-        torp: togl_repeat   { compatible = "zmk,behavior-hold-tap"; label = "TOGL_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&tog>, <&key_repeat>; }; 
-        tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <350>; bindings = <&tog>, <&sl>; }; 
+        tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&kp>, <&kp>; }; 
+        torp: togl_repeat   { compatible = "zmk,behavior-hold-tap"; label = "TOGL_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&key_repeat>; }; 
+        tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&sl>; }; 
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL"; #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
     };
@@ -64,8 +64,8 @@
 
         sym {
             bindings = <
-                &kp LT  &kp LPAR  &kp LBKT  &kp LBRC       &kp EXCL   &kp AT    &kp HASH  &kp TILDE 
-                &kp GT  &kp RPAR  &kp RBKT  &kp RBRC       &kp STAR   &kp AMPS  &kp PIPE  &kp UNDER 
+                &kp LT  &kp LBRC  &kp LBKT  &kp LPAR       &kp EXCL   &kp AT    &kp HASH  &kp TILDE 
+                &kp GT  &kp RBRC  &kp RBKT  &kp RPAR       &kp STAR   &kp AMPS  &kp PIPE  &kp UNDER 
                                &key_repeat  &moto NV 0     &kp BSLH  &kp GRAVE 
             >;
          };
