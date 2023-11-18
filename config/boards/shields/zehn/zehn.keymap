@@ -22,7 +22,7 @@
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
             bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>; };
-        moa2:     mom_a2   { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
+        moa2:     mom_a2   { compatible = "zmk,behavior-macro"; label = "ZM_mom_a2"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
             bindings = <&macro_press &mo A2>, <&macro_pause_for_release>, <&macro_release &mo A2>; };
     };
 
@@ -32,7 +32,7 @@
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
         tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&sl>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&kp>, <&kp>; }; 
-        carp: caps_repeat   { compatible = "zmk,behavior-hold-tap"; label = "CAPS_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&caps_word>, <&key_repeat>; }; 
+        carp: caps_repeat   { compatible = "zmk,behavior-hold-tap"; label = "CAPS_REPEAT";  #binding-cells = <0>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&caps_word>, <&key_repeat>; }; 
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
     };
@@ -43,7 +43,7 @@
             bindings = <
                 &kp A  &kp S  &kp E  &kp R     &kp U  &kp I  &kp O  &kp L 
                 &kp F  &kp W  &kp D  &kp T     &kp N  &kp M  &kp H  &kp C 
-                    &mosl NV A2  &carp C R     &sk LSHFT  &lt NU SPACE 
+                        &mosl NV A2  &carp     &sk LSHFT  &lt NU SPACE 
             >;
         };
 
