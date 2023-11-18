@@ -5,7 +5,7 @@
 &caps_word { continue-list = <MINUS UNDERSCORE BKSP DEL LEFT RIGHT DOT COMMA SEMI SLASH>; };
 &sk { release-after-ms = <3000>; quick-release; ignore-modifiers; };
 &sl { release-after-ms = <3000>; };
-&lt { tapping-term-ms = <300>; };
+&lt { tapping-term-ms = <200>; };
 
 #define A1 0
 #define NU 1
@@ -22,12 +22,14 @@
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
             bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>; };
+        moa2:     mom_a2   { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
+            bindings = <&macro_press &mo A2>, <&macro_pause_for_release>, <&macro_release &mo A2>; };
     };
-    behaviors {        
+
+    behaviors {
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
         mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; }; 
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
-        mokp: moml_kp       { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
         tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&sl>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&kp>, <&kp>; }; 
         carp: caps_repeat   { compatible = "zmk,behavior-hold-tap"; label = "CAPS_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&caps_word>, <&key_repeat>; }; 
@@ -57,7 +59,7 @@
              bindings = <
                 &kp Z    &kp V    &kp Y      &kp X     &kp B  &kp K      &kp J     &kp Q 
                 &kp SQT  &kp DQT  &kp SLASH  &kp G     &kp P  &kp COLON  &kp SEMI  &kp QMARK 
-                                &moto A2 0   &to NU    &kp DOT  &kp COMMA 
+                                     &moa2  &to NU     &kp DOT  &kp COMMA 
             >;
         };
 
@@ -79,8 +81,8 @@
 
         nav {
             bindings = <
-                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME   &kp UP    &mokp KTM END  &kp PG_UP 
-                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp LEFT   &kp DOWN  &kp RIGHT      &kp PG_DN 
+                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME   &kp UP    &lt KTM END  &kp PG_UP 
+                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp LEFT   &kp DOWN  &kp RIGHT    &kp PG_DN 
                                         &to 0  &kp SPACE     &kp ENTER  &bkspdel 
             >;
         };
