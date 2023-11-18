@@ -13,6 +13,7 @@
 #define SY 3
 #define FU 4
 #define NV 5
+#define KTM 6
 
 #define TOSL(l) &tosl l l
 #define BT(d) &bt BT_SEL d
@@ -26,17 +27,12 @@
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
         mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; }; 
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
+        mokp: moml_kp       { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
         tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&sl>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&kp>, <&kp>; }; 
         carp: caps_repeat   { compatible = "zmk,behavior-hold-tap"; label = "CAPS_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&caps_word>, <&key_repeat>; }; 
 
-        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_RCTL)>; }; 
-        upins:   up_ins     { compatible = "zmk,behavior-mod-morph"; label = "UP_INS";     #binding-cells = <0>; bindings = <&kp UP>,    <&kp INS>;   mods = <(MOD_RCTL)>; }; 
-        homerls: home_rlsm  { compatible = "zmk,behavior-mod-morph"; label = "HOME_RLSM";  #binding-cells = <0>; bindings = <&kp HOME>,  <&rls_mods>; mods = <(MOD_RCTL)>; }; 
-        sktshft: sk_kt_shft { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_SHFT"; #binding-cells = <0>; bindings = <&sk LSHFT>, <&kt LSHFT>; mods = <(MOD_RCTL)>; }; 
-        sktctrl: sk_kt_ctrl { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_CTRL"; #binding-cells = <0>; bindings = <&sk LCTRL>, <&kt LCTRL>; mods = <(MOD_RCTL)>; }; 
-        sktgui:  sk_kt_gui  { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_GUI";  #binding-cells = <0>; bindings = <&sk LGUI>,  <&kt LGUI>;  mods = <(MOD_RCTL)>; }; 
-        sktalt:  sk_kt_alt  { compatible = "zmk,behavior-mod-morph"; label = "SK_KT_ALT";  #binding-cells = <0>; bindings = <&sk LALT>,  <&kt LALT>;  mods = <(MOD_RCTL)>; }; 
+        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
     };
 
     keymap {
@@ -83,11 +79,19 @@
 
         nav {
             bindings = <
-                &sktshft  &sktctrl  &sktgui  &sktalt      &homerls  &upins    &tkp RCTRL END  &kp PG_UP 
-                &kp TAB   &tkp X C  &kp ESC  &tkp Z V     &kp LEFT  &kp DOWN  &kp RIGHT       &kp PG_DN 
-                                    &kp SPACE  &to 0      &bkspdel  &kp ENTER 
+                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME  &kp UP    &mokp KTM END  &kp PG_UP 
+                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp LEFT  &kp DOWN  &kp RIGHT      &kp PG_DN 
+                                        &kp SPACE  &to 0     &bkspdel  &kp ENTER 
             >;
         };
 
+        ktm {
+            bindings = <
+                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT     &rls_mods  &kp INS  &trans  &trans 
+                &trans     &trans     &trans    &trans       &trans     &trans   &trans  &trans 
+                                      &trans    &trans       &trans     &trans
+            >;
+        };
     };
 };
+ 
