@@ -90,9 +90,9 @@
 
         ktm {
             bindings = <
-                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT     &rls_mods  &kp INS  &trans  &trans 
-                &trans     &trans     &trans    &trans       &trans     &trans   &trans  &trans 
-                                      &trans    &trans       &trans     &trans
+                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT         &rls_mods     &kp INS  &trans  &trans 
+                &trans     &trans     &trans    &kp LG(LBKT)     &kp LG(RBKT)  &trans   &trans  &trans 
+                                      &trans    &trans           &trans        &trans
             >;
         };
     };
