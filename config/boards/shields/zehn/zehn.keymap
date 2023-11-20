@@ -7,9 +7,6 @@
 &sl { release-after-ms = <3000>; };
 &lt { tapping-term-ms = <200>; };
 
-/* Apple Globe key */
-#define AGLOB (ZMK_HID_USAGE(HID_USAGE_CONSUMER, 0x029D))
-
 #define A1 0
 #define NU 1
 #define A2 2
@@ -94,7 +91,7 @@
         ktm {
             bindings = <
                 &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT     &rls_mods  &kp INS  &trans  &trans 
-                &trans     &trans     &trans    &trans       &kp AGLOB  &trans   &trans  &trans 
+                &trans     &trans     &trans    &trans       &trans     &trans   &trans  &trans 
                                       &trans    &trans       &trans     &trans
             >;
         };
