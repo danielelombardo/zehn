@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <apple_globe.h>
 
 &caps_word { continue-list = <MINUS UNDERSCORE BKSP DEL LEFT RIGHT DOT COMMA SEMI SLASH>; };
 &sk { release-after-ms = <3000>; quick-release; ignore-modifiers; };
@@ -67,7 +68,7 @@
         sym {
             bindings = <
                 &kp CAPS  &kp PSCRN  &kp C_BRI_DN  &kp C_BRI_UP     &kp LPAR  &kp LBKT  &kp LBRC  &kp LT         
-                &none     &none      &kp C_VOL_DN  &kp C_VOL_UP     &kp RPAR  &kp RBKT  &kp RBRC  &kp GT         
+                &none     &none      &kp C_VOL_DN  &kp C_VOL_UP     &kp RPAR  &k2-p RBKT  &kp RBRC  &kp GT         
                                        &moto NV 0  &kp C_MUTE       &none  &to 0 
            >;
          };
@@ -91,7 +92,7 @@
         ktm {
             bindings = <
                 &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT     &rls_mods  &kp INS  &trans  &trans 
-                &trans     &trans     &trans    &trans       &sk C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &trans   &trans  &trans 
+                &trans     &trans     &trans    &trans       &kp GLOBE  &trans   &trans  &trans 
                                       &trans    &trans       &trans     &trans
             >;
         };
