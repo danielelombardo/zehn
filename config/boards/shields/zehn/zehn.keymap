@@ -91,7 +91,7 @@
         ktm {
             bindings = <
                 &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT     &rls_mods  &kp INS  &trans  &trans 
-                &trans     &trans     &trans    &trans       &trans     &trans   &trans  &trans 
+                &trans     &trans     &trans    &trans       &sk C_AC_NEXT_KEYBOARD_LAYOUT_SELECT  &trans   &trans  &trans 
                                       &trans    &trans       &trans     &trans
             >;
         };
