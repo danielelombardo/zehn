@@ -67,7 +67,7 @@
         sym {
             bindings = <
                 &kp CAPS  &kp PSCRN  &kp C_BRI_DN  &kp C_BRI_UP     &kp LPAR  &kp LBKT  &kp LBRC  &kp LT         
-                &none     &none      &kp C_VOL_DN  &kp C_VOL_UP     &kp RPAR  &k2-p RBKT  &kp RBRC  &kp GT         
+                &none     &none      &kp C_VOL_DN  &kp C_VOL_UP     &kp RPAR  &kp RBKT  &kp RBRC  &kp GT         
                                        &moto NV 0  &kp C_MUTE       &none  &to 0 
            >;
          };
