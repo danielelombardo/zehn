@@ -38,13 +38,27 @@
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
     };
 
+    combos {
+        compatible = "zmk,combos";
+        combo_z   { timeout-ms = <50>; key-positions =  <0 8>; layers = <0>; bindings = <&kp Z>; };
+        combo_v   { timeout-ms = <50>; key-positions =  <1 8>; layers = <0>; bindings = <&kp V>; };
+        combo_y   { timeout-ms = <50>; key-positions =  <2 8>; layers = <0>; bindings = <&kp Y>; };
+        combo_g   { timeout-ms = <50>; key-positions =  <3 8>; layers = <0>; bindings = <&kp G>; };
+        combo_x   { timeout-ms = <50>; key-positions =  <7 8>; layers = <0>; bindings = <&kp X>; };
+        combo_b   { timeout-ms = <50>; key-positions = <13 8>; layers = <0>; bindings = <&kp B>; };
+        combo_k   { timeout-ms = <50>; key-positions = <12 8>; layers = <0>; bindings = <&kp K>; };
+        combo_j   { timeout-ms = <50>; key-positions = <11 8>; layers = <0>; bindings = <&kp J>; };
+        combo_q   { timeout-ms = <50>; key-positions = <10 8>; layers = <0>; bindings = <&kp Q>; };
+        combo_p   { timeout-ms = <50>; key-positions = <17 8>; layers = <0>; bindings = <&kp P>; };
+    };
+
     keymap {
         compatible = "zmk,keymap";
         abc1 {
             bindings = <
                 &kp A  &kp S  &kp E  &kp R     &kp U  &kp I  &kp O  &kp L 
                 &kp F  &kp W  &kp D  &kp T     &kp N  &kp M  &kp H  &kp C 
-                  &mosl NV A2  &key_repeat     &sk LSHFT  &lt NU SPACE 
+                   &mosl NV A2 &key_repeat     &sk LSHFT  &lt NU SPACE 
             >;
         };
 
@@ -58,8 +72,8 @@
 
         abc2 {
              bindings = <
-                &kp Z    &kp V    &kp Y      &kp X     &kp B  &kp K      &kp J     &kp Q 
-                &kp SQT  &kp DQT  &kp SLASH  &kp G     &kp P  &kp COLON  &kp SEMI  &kp QMARK 
+                &kp Z    &kp V    &kp Y      &kp G     &kp B  &kp K      &kp J     &kp Q 
+                &kp SQT  &kp DQT  &kp SLASH  &kp X     &kp P  &kp COLON  &kp SEMI  &kp QMARK 
                                  &moa2  &tto NV NU     &kp DOT  &kp COMMA 
             >;
         };
