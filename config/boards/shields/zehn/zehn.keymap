@@ -15,9 +15,8 @@
 #define NV 5
 #define KTM 6
 
-#define TOSL(l) &tosl l l
-#define BT(d) &bt BT_SEL d
 #define ASH(l) &tkp LS(l) l
+#define BT(d) &bt BT_SEL d
 
 / {
     macros {
@@ -27,16 +26,14 @@
             bindings = <&macro_tap &kp LSHFT>, <&macro_press &mo A2>, <&macro_pause_for_release>, <&macro_release &mo A2>; }; 
         tonu:     to_nu    { compatible = "zmk,behavior-macro"; label = "ZM_to_nu";  #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
             bindings = <&macro_pause_for_release>, <&macro_tap &to NU>; }; 
+        cw:       cw_on_sl { compatible = "zmk,behavior-macro"; label = "ZM_cw_on_sl";  #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
+            bindings = <&macro_tap &caps_word &kp LSHFT>; }; 
     };
 
     behaviors {
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
-        mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; }; 
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
-        tosl: togl_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&tog>, <&sl>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <225>; bindings = <&kp>, <&kp>; }; 
-        tto:  two_to        { compatible = "zmk,behavior-hold-tap"; label = "TWO_TO";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&to>, <&to>; }; 
-        carp: caps_repeat   { compatible = "zmk,behavior-hold-tap"; label = "CAPS_REPEAT";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <250>; bindings = <&caps_word>, <&key_repeat>; }; 
 
         bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
     };
@@ -45,33 +42,33 @@
         compatible = "zmk,keymap";
         abc1 {
             bindings = <
-                &kp A  &kp S  &kp E  &kp R     &kp U  &kp I  &kp O  &kp L 
-                &kp F  &kp W  &kp D  &kp T     &kp N  &kp M  &kp H  &kp C 
-                   &mosl NV A2 &key_repeat     &sk LSHFT  &lt NU SPACE 
+                ASH(A)  ASH(S)  ASH(E)  ASH(R)     ASH(U)  ASH(I)  ASH(O)  ASH(L) 
+                ASH(F)  ASH(W)  ASH(D)  ASH(T)     ASH(N)  ASH(M)  ASH(H)  ASH(C) 
+                       &mosl NV A2 &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
         num {
             bindings = <
-                TOSL(SY)  &kp N1  &kp N2  &kp N3     &kp N7  &kp N8     &kp N9    &kp MINUS 
-                TOSL(FU)  &kp N4  &kp N5  &kp N6     &kp N0  &kp GRAVE  &kp BSLH  &kp EQUAL 
-                           &mosk NV RSHFT  &tonu     &sl A2  &to 0 
+                &kp LPAR  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)    ASH(MINUS) 
+                &kp RPAR  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(GRAVE)  ASH(BSLH)  ASH(EQUAL) 
+                                 &mosl NV A2  &tonu     &trans  &to 0 
             >;
          };
 
         abc2 {
              bindings = <
-                ASH(Z)    ASH(V)     ASH(Y)     ASH(G)     ASH(B) ASH(K)     ASH(J)     ASH(Q)
-                ASH(SQT)  &kp COMMA  &kp SLASH  ASH(X)     ASH(P) &kp QMARK  ASH(SEMI)  &kp DOT 
-                                 &moto NV NV  &kp CAPS     &caps_word  &moa2
+                ASH(Z)    ASH(V)     ASH(Y)     ASH(G)     ASH(B) ASH(K)     ASH(J)   ASH(Q)
+                ASH(SQT)  &kp COMMA  &kp SLASH  ASH(X)     ASH(P) &kp QMARK  &kp DOT  ASH(SEMI) 
+                                 &moto NV NV  &kp CAPS     &cw  &moa2
             >;
         };
 
         sym {
             bindings = <
-                &none  &kp PSCRN   &kp C_BRI_DN  &kp C_BRI_UP    &kp LPAR  &kp LBKT  &kp LBRC  &kp LT         
-                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP    &kp RPAR  &kp RBKT  &kp RBRC  &kp GT         
-                                            &moto NV 0  &none    &none  &to 0 
+                &none  &kp PSCRN   &kp C_BRI_DN  &kp C_BRI_UP    &kp LBKT  &kp LBRC  &kp LT  &none 
+                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP    &kp RBKT  &kp RBRC  &kp GT  &none 
+                                            &moto NV 0  &none    &mosl FU FU  &to 0 
            >;
          };
 
