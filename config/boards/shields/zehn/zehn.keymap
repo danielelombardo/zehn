@@ -32,6 +32,7 @@
 
     behaviors {
         mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
+        mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; };
         moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
         tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <225>; bindings = <&kp>, <&kp>; }; 
 
