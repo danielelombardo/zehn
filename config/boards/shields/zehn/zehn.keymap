@@ -4,7 +4,7 @@
 
 &caps_word { continue-list = <MINUS UNDERSCORE BKSP DEL LEFT RIGHT DOT COMMA SEMI SLASH>; };
 &sk { release-after-ms = <3000>; quick-release; ignore-modifiers; };
-&sl { release-after-ms = <3000>; };
+&sl { release-after-ms = <1000>; };
 &lt { tapping-term-ms = <200>; };
 
 #define A1 0
@@ -22,21 +22,17 @@
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
             bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>; };
-        moa2:     mom_a2   { compatible = "zmk,behavior-macro"; label = "ZM_mom_a2"; #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
-            bindings = <&macro_tap &kp LSHFT>, <&macro_press &mo A2>, <&macro_pause_for_release>, <&macro_release &mo A2>; }; 
-        tonu:     to_nu    { compatible = "zmk,behavior-macro"; label = "ZM_to_nu";  #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
-            bindings = <&macro_pause_for_release>, <&macro_tap &to NU>; }; 
         cw:       cw_on_sl { compatible = "zmk,behavior-macro"; label = "ZM_cw_on_sl";  #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
             bindings = <&macro_tap &caps_word &kp LSHFT>; }; 
     };
 
     behaviors {
-        mosl: moml_1shot_l  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
-        mosk: moml_1shot_k  { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_K"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sk>; };
-        moto: mom_to_l      { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
-        tkp:  two_kp        { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <225>; bindings = <&kp>, <&kp>; }; 
+        mosl: moml_1shot_l { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
+        moto: mom_to_l     { compatible = "zmk,behavior-hold-tap"; label = "MOM_TO_L";     #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&to>; }; 
+        mokr: mom_key_rep  { compatible = "zmk,behavior-hold-tap"; label = "MOM_KEY_REP";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&key_repeat>; }; 
+        tkp:  two_kp       { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <210>; bindings = <&kp>, <&kp>; }; 
 
-        bkspdel: back_del   { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
+        bkspdel: back_del  { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
     };
 
     keymap {
@@ -45,7 +41,7 @@
             bindings = <
                 ASH(A)  ASH(S)  ASH(E)  ASH(R)     ASH(U)  ASH(I)  ASH(O)  ASH(L) 
                 ASH(F)  ASH(W)  ASH(D)  ASH(T)     ASH(N)  ASH(M)  ASH(H)  ASH(C) 
-                       &mosl NV A2 &key_repeat     &mosl SY SY  &lt NU SPACE 
+                            &mokr NV r  &sl A2     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
@@ -53,7 +49,7 @@
             bindings = <
                 &kp LPAR  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)    ASH(MINUS) 
                 &kp RPAR  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(GRAVE)  ASH(BSLH)  ASH(EQUAL) 
-                                 &mosl NV A2  &tonu     &trans  &to 0 
+                                     &trans  &trans     &trans  &to 0 
             >;
          };
 
@@ -61,7 +57,7 @@
              bindings = <
                 ASH(Z)    ASH(V)     ASH(Y)     ASH(G)     ASH(B) ASH(K)     ASH(J)   ASH(Q)
                 ASH(SQT)  &kp COMMA  &kp SLASH  ASH(X)     ASH(P) &kp QMARK  &kp DOT  ASH(SEMI) 
-                                 &moto NV NV  &kp CAPS     &cw  &moa2
+                                      &moto NV NV  &cw     &kp CAPS  &to NU 
             >;
         };
 
@@ -77,7 +73,7 @@
             bindings = <
                 BT(0)  &kp F1  &kp F2  &kp F3     &kp F7   &kp F8   &kp F9   BT(1) 
                 BT(2)  &kp F4  &kp F5  &kp F6     &kp F10  &kp F11  &kp F12  BT(3) 
-                  &mosk NV RSHFT  &key_repeat     &bt BT_CLR  &to 0 
+                       &mokr NV r  &bt BT_CLR     &to 0  &to 0 
             >;
         };
 
