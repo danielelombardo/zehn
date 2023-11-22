@@ -41,7 +41,7 @@
             bindings = <
                 ASH(A)  ASH(S)  ASH(E)  ASH(R)     ASH(U)  ASH(I)  ASH(O)  ASH(L) 
                 ASH(F)  ASH(W)  ASH(D)  ASH(T)     ASH(N)  ASH(M)  ASH(H)  ASH(C) 
-                            &mokr NV r  &sl A2     &mosl SY SY  &lt NU SPACE 
+                            &mokr NV R  &sl A2     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
@@ -73,7 +73,7 @@
             bindings = <
                 BT(0)  &kp F1  &kp F2  &kp F3     &kp F7   &kp F8   &kp F9   BT(1) 
                 BT(2)  &kp F4  &kp F5  &kp F6     &kp F10  &kp F11  &kp F12  BT(3) 
-                       &mokr NV r  &bt BT_CLR     &to 0  &to 0 
+                       &mokr NV R  &bt BT_CLR     &to 0  &to 0 
             >;
         };
 
