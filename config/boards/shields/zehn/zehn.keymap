@@ -41,7 +41,7 @@
             bindings = <
                 ASH(A)  ASH(S)  ASH(E)  ASH(R)     ASH(U)  ASH(I)  ASH(O)  ASH(L) 
                 ASH(F)  ASH(W)  ASH(D)  ASH(T)     ASH(N)  ASH(M)  ASH(H)  ASH(C) 
-                            &mokr NV R  &sl A2     &mosl SY SY  &lt NU SPACE 
+                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
