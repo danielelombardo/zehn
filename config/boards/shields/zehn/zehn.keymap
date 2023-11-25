@@ -50,7 +50,7 @@
         wsrt1 {
             bindings = <
                 ASH(W)  ASH(S)  ASH(R)  ASH(T)     ASH(H)  ASH(E)  ASH(O)  ASH(Y) 
-                ASH(C)  ASH(L)  ASH(M)  ASH(D)     ASH(N)  ASH(I)  ASH(A)  ASH(U) 
+                ASH(C)  ASH(D)  ASH(M)  ASH(L)     ASH(N)  ASH(I)  ASH(A)  ASH(U) 
                       &mosl NV W2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
@@ -73,8 +73,8 @@
 
         wsrt2 {
              bindings = <
-                ASH(Q)  ASH(V)  ASH(F)     ASH(SQT)      ASH(P)  ASH(K)     ASH(G)     ASH(J)
-                ASH(Z)  ASH(X)  &kp QMARK  ASH(SEMI)     ASH(B)  &kp SLASH  &kp COMMA  &kp DOT
+                ASH(Q)  ASH(V)  ASH(F)     ASH(SQT)      ASH(P)  ASH(B)     ASH(G)     ASH(J)
+                ASH(Z)  ASH(X)  &kp QMARK  ASH(SEMI)     ASH(K)  &kp SLASH  &kp COMMA  &kp DOT
                                     &moto NV NV  &cw     &kp CAPS  &tog NU 
             >;
         };
@@ -106,7 +106,7 @@
         ktm {
             bindings = <
                 &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT         &rls_mods     &kp INS  &trans  &trans 
-                &trans     &to W1     &trans    &kp LG(LBKT)     &kp LG(RBKT)  &trans   &trans  &trans 
+                &trans     &tog W1    &trans    &kp LG(LBKT)     &kp LG(RBKT)  &trans   &trans  &trans 
                                       &trans    &trans           &trans        &trans
             >;
         };
