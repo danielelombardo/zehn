@@ -41,73 +41,73 @@
         compatible = "zmk,keymap";
         abc1 {
             bindings = <
-                ASH(A)  ASH(S)  ASH(E)  ASH(R)     ASH(U)  ASH(I)  ASH(O)  ASH(L) 
-                ASH(F)  ASH(W)  ASH(D)  ASH(T)     ASH(N)  ASH(M)  ASH(H)  ASH(C) 
+                ASH(W)  ASH(C)  ASH(E)  ASH(D)     ASH(Y)  ASH(M)  ASH(H)  ASH(L) 
+                ASH(A)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(I)  ASH(O)  ASH(U) 
                       &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
         wsrt1 {
             bindings = <
-                ASH(W)  ASH(S)  ASH(R)  ASH(T)     ASH(H)  ASH(E)  ASH(O)  ASH(U) 
-                ASH(C)  ASH(L)  ASH(D)  ASH(I)     ASH(N)  ASH(M)  ASH(A)  ASH(Y) 
+                ASH(W)  ASH(L)  ASH(D)  ASH(C)   ASH(H)  ASH(M)  ASH(O)  ASH(U) 
+                ASH(I)  ASH(S)  ASH(R)  ASH(T)   ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
                       &mosl NV W2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
         num {
             bindings = <
-                &kp LPAR  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)    ASH(MINUS) 
-                &kp RPAR  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(GRAVE)  ASH(BSLH)  ASH(EQUAL) 
+                &kp RPAR  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(MINUS)  ASH(EQUAL)  ASH(GRAVE) 
+                &kp LPAR  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)     ASH(BSLH) 
                                      &trans  &trans     &trans  &tog NU 
             >;
          };
 
         abc2 {
              bindings = <
-                ASH(Z)    ASH(V)     ASH(Y)     ASH(G)     ASH(B) ASH(K)     ASH(J)   ASH(Q)
-                ASH(SQT)  &kp COMMA  &kp SLASH  ASH(X)     ASH(P) &kp QMARK  &kp DOT  ASH(SEMI) 
+                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  ASH(Q) 
+                ASH(Z)     ASH(V)     ASH(F)    ASH(G)     ASH(B)     ASH(P)   ASH(K)     ASH(J)
                                       &moto NV NV  &cw     &kp CAPS  &tog NU 
             >;
         };
 
         wsrt2 {
              bindings = <
-                ASH(Q)  ASH(V)  ASH(F)     ASH(G)        ASH(B)  ASH(SQT)   ASH(K)   ASH(J)
-                ASH(Z)  ASH(X)  &kp SLASH  ASH(SEMI)     ASH(P)  &kp QMARK  &kp DOT  &kp COMMA
+                ASH(Z)  ASH(X)  ASH(SEMI)  &kp SLASH     &kp DOT  ASH(SQT)  &kp COMMA  &kp QMARK
+                ASH(Q)  ASH(V)  ASH(F)     ASH(G)        ASH(B)   ASH(P)    ASH(K)     ASH(J)
                                     &moto NV NV  &cw     &kp CAPS  &tog NU 
             >;
         };
 
         sym {
             bindings = <
-                &none  &kp PSCRN   &kp C_BRI_DN  &kp C_BRI_UP    &kp LBKT  &kp LBRC  &kp LT  &none 
-                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP    &kp RBKT  &kp RBRC  &kp GT  &none 
+                &none  &kp PSCRN   &kp C_BRI_DN  &kp C_BRI_UP    &kp RBKT  &kp RBRC  &kp GT  &none 
+                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP    &kp LBKT  &kp LBRC  &kp LT  &none 
                                            &moto NV NV  &none    &mosl FU FU  &tog SY 
            >;
          };
 
         fun {
             bindings = <
-                BT(0)  &kp F1  &kp F2  &kp F3     &kp F7   &kp F8   &kp F9   BT(1) 
                 BT(2)  &kp F4  &kp F5  &kp F6     &kp F10  &kp F11  &kp F12  BT(3) 
+                BT(0)  &kp F1  &kp F2  &kp F3     &kp F7   &kp F8   &kp F9   BT(1) 
                        &mokr NV R  &bt BT_CLR     &tog FU  &tog FU 
             >;
         };
 
         nav {
             bindings = <
-                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME   &kp UP    &lt KTM END  &kp PG_UP 
-                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp LEFT   &kp DOWN  &kp RIGHT    &kp PG_DN 
+                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp HOME   &kp UP    &lt KTM END  &kp PG_UP 
+                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp LEFT   &kp DOWN  &kp RIGHT    &kp PG_DN 
                                       &tog NV  &kp SPACE     &kp ENTER  &bkspdel 
             >;
         };
 
         ktm {
             bindings = <
-                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT         &rls_mods     &kp INS  &trans  &trans 
-                &trans     &tog W1    &trans    &kp LG(LBKT)     &kp LG(RBKT)  &trans   &trans  &trans 
-                                      &trans    &trans           &trans        &trans
+                &trans  &kp LG(LBKT)  &kp LG(RBKT)  &trans     &rls_mods  &kp INS  &trans  &trans 
+                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT       &tog W1    &trans   &trans  &trans 
+                                      &trans    &trans         &trans     &trans
             >;
         };
     };
