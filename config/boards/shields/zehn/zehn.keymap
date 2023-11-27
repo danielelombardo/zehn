@@ -50,7 +50,7 @@
         wsrt1 {
             bindings = <
                 ASH(W)  ASH(S)  ASH(R)  ASH(T)     ASH(H)  ASH(E)  ASH(O)  ASH(U) 
-                ASH(L)  ASH(C)  ASH(Y)  ASH(D)     ASH(N)  ASH(M)  ASH(A)  ASH(I) 
+                ASH(C)  ASH(L)  ASH(D)  ASH(I)     ASH(N)  ASH(M)  ASH(A)  ASH(Y) 
                       &mosl NV W2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
