@@ -7,8 +7,8 @@
 &sl { release-after-ms = <1000>; };
 &lt { tapping-term-ms = <200>; };
 
-#define A1 0
-#define W1 1
+#define W1 0
+#define A1 1
 #define NU 2
 #define A2 3
 #define W2 4
@@ -19,6 +19,8 @@
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
+#define COPYUNDO &tkp LG(Z) LG(Ċ)
+#define PASTECUT &tkp LG(X) LG(V)
 
 / {
     macros {
@@ -39,19 +41,19 @@
 
     keymap {
         compatible = "zmk,keymap";
-        abc1 {
-            bindings = <
-                ASH(W)  ASH(C)  ASH(E)  ASH(D)     ASH(Y)  ASH(M)  ASH(H)  ASH(L) 
-                ASH(A)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(I)  ASH(O)  ASH(U) 
-                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
-            >;
-        };
-
         wsrt1 {
             bindings = <
                 ASH(W)  ASH(L)  ASH(D)  ASH(C)   ASH(H)  ASH(M)  ASH(O)  ASH(U) 
                 ASH(I)  ASH(S)  ASH(R)  ASH(T)   ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
                       &mosl NV W2  &key_repeat     &mosl SY SY  &lt NU SPACE 
+            >;
+        };
+
+        abc1 {
+            bindings = <
+                ASH(W)  ASH(C)  ASH(E)  ASH(D)     ASH(Y)  ASH(M)  ASH(H)  ASH(L) 
+                ASH(A)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(I)  ASH(O)  ASH(U) 
+                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
@@ -65,9 +67,9 @@
 
         abc2 {
              bindings = <
-                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  ASH(Q) 
+                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  HhhASH(Q) 
                 ASH(Z)     ASH(V)     ASH(F)    ASH(G)     ASH(B)     ASH(P)   ASH(K)     ASH(J)
-                                      &moto NV NV  &cw     &kp CAPS  &tog NU 
+                                 &moto NV NV  &kp CAPS     &cw  &tog NU 
             >;
         };
 
@@ -75,7 +77,7 @@
              bindings = <
                 ASH(Z)  ASH(X)  ASH(SEMI)  &kp SLASH     &kp DOT  ASH(SQT)  &kp COMMA  &kp QMARK
                 ASH(Q)  ASH(V)  ASH(F)     ASH(G)        ASH(B)   ASH(P)    ASH(K)     ASH(J)
-                                    &moto NV NV  &cw     &kp CAPS  &tog NU 
+                               &moto NV NV  &kp CAPS     &cw  &tog NU 
             >;
         };
 
@@ -97,17 +99,17 @@
 
         nav {
             bindings = <
-                &kp TAB    &tkp X C   &kp ESC   &tkp Z V     &kp HOME   &kp UP    &lt KTM END  &kp PG_UP 
-                &sk LSHFT  &sk LCTRL  &sk LGUI  &sk LALT     &kp LEFT   &kp DOWN  &kp RIGHT    &kp PG_DN 
-                                      &tog NV  &kp SPACE     &kp ENTER  &bkspdel 
+                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT     &lt KTM HOME  &kp UP    &kp END    &tog A1 
+                &kp ESC    &kp SPACE  COPYUNDO  &kp TAB      &kp LEFT      &kp DOWN  &kp RIGHT  &kp ENTER 
+                                       &tog NV  PASTECUT     &sk LSHFT     &bkspdel 
             >;
         };
 
         ktm {
             bindings = <
-                &trans  &kp LG(LBKT)  &kp LG(RBKT)  &trans     &rls_mods  &kp INS  &trans  &trans 
-                &kt LSHFT  &kt LCTRL  &kt LGUI  &kt LALT       &tog W1    &trans   &trans  &trans 
-                                      &trans    &trans         &trans     &trans
+                &trans  &kt LCTRL  &kt LGUI  &kt LALT    &trans  &kp INS  &kp PG_UP  &trans 
+                &trans  &trans     &trans    &trans      &trans  &trans   &kp PG_DN  &trans 
+                                   &trans    &trans      &kt LSHFT  &trans
             >;
         };
     };
