@@ -67,7 +67,7 @@
 
         abc2 {
              bindings = <
-                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  HhhASH(Q) 
+                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  ASH(Q) 
                 ASH(Z)     ASH(V)     ASH(F)    ASH(G)     ASH(B)     ASH(P)   ASH(K)     ASH(J)
                                  &moto NV NV  &kp CAPS     &cw  &tog NU 
             >;
