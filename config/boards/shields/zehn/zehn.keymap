@@ -19,6 +19,8 @@
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
+#define COPYUNDO &tkp LG(Z) LG(C)
+#define PASTECUT &tkp LG(X) LG(V)
 
 / {
     macros {
@@ -97,9 +99,9 @@
 
         nav {
             bindings = <
-                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT          &lt KTM HOME  &kp UP    &kp END    &tog A1 
-                &kp ESC    &kp SPACE  &tkp LG(Z) LG(Ċ)  &kp TAB   &kp LEFT      &kp DOWN  &kp RIGHT  &kp ENTER 
-                                      &tog NV  &tkp LG(X) LG(V)   &sk LSHFT     &bkspdel 
+                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT     &lt KTM HOME  &kp UP    &kp END    &tog A1 
+                &kp ESC    &kp SPACE  COPYUNDO  &kp TAB      &kp LEFT      &kp DOWN  &kp RIGHT  &kp ENTER 
+                                       &tog NV  PASTECUT     &sk LSHFT     &bkspdel 
             >;
         };
 
