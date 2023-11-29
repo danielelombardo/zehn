@@ -15,7 +15,6 @@
 #define SY 5
 #define FU 6
 #define NV 7
-#define KTM 8
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
@@ -59,9 +58,9 @@
 
         num {
             bindings = <
-                &kp RPAR  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(MINUS)  ASH(EQUAL)  ASH(GRAVE) 
-                &kp LPAR  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)     ASH(BSLH) 
-                                     &trans  &trans     &trans  &tog NU 
+                ASH(RBRC)  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(MINUS)  ASH(EQUAL)  ASH(GRAVE) 
+                ASH(LBRC)  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)     ASH(BSLH) 
+                                      &trans  &trans     &trans  &tog NU 
             >;
          };
 
@@ -83,11 +82,11 @@
 
         sym {
             bindings = <
-                &none  &kp PSCRN   &kp C_BRI_DN  &kp C_BRI_UP    &kp RBKT  &kp RBRC  &kp GT  &none 
-                &none  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP    &kp LBKT  &kp LBRC  &kp LT  &none 
-                                           &moto NV NV  &none    &mosl FU FU  &tog SY 
-           >;
-         };
+                &none      &kt LCTRL  &kt LGUI  &kt LALT              &kp LT        &kp PG_UP  &kp GT  &tog A1
+                &kp PSCRN  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP     &kp C_BRI_DN  &kp PG_DN  &kp C_BRI_UP  &none 
+                                             &rls_mods  &kt LSHFT     &mosl FU FU  &tog SY
+            >;
+        };
 
         fun {
             bindings = <
@@ -99,18 +98,11 @@
 
         nav {
             bindings = <
-                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT     &lt KTM HOME  &kp UP    &kp END    &tog A1 
-                &kp ESC    &kp SPACE  COPYUNDO  &kp TAB      &kp LEFT      &kp DOWN  &kp RIGHT  &kp ENTER 
-                                       &tog NV  PASTECUT     &sk LSHFT     &bkspdel 
+                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME   &kp UP    &kp END    &kp INS 
+                &kp ESC    COPYUNDO  &kp SPACE  &kp TAB      &kp LEFT   &kp DOWN  &kp RIGHT  &kp ENTER 
+                                       &tog NV  PASTECUT     &sk LSHFT  &bkspdel 
             >;
         };
 
-        ktm {
-            bindings = <
-                &trans  &kt LCTRL  &kt LGUI  &kt LALT    &trans  &kp INS  &kp PG_UP  &trans 
-                &trans  &trans     &trans    &trans      &trans  &trans   &kp PG_DN  &trans 
-                                   &trans    &trans      &kt LSHFT  &trans
-            >;
-        };
     };
 };
