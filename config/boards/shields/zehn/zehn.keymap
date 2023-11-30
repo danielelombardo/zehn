@@ -58,8 +58,8 @@
 
         num {
             bindings = <
-                ASH(RBKT)  ASH(N4)  ASH(N5)  ASH(N6)     ASH(N0)  ASH(MINUS)  ASH(EQUAL)  ASH(GRAVE) 
-                ASH(LBKT)  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)  ASH(N8)     ASH(N9)     ASH(BSLH) 
+                ASH(RBKT)  ASH(N4)  ASH(N5)  ASH(N6)     ASH(MINUS)  ASH(EQUAL)  ASH(N0)  ASH(GRAVE) 
+                ASH(LBKT)  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)     ASH(N8)     ASH(N9)  ASH(BSLH) 
                                       &trans  &trans     &trans  &tog NU 
             >;
          };
@@ -74,17 +74,17 @@
 
         wsrt2 {
              bindings = <
-                ASH(Z)  ASH(X)  ASH(SEMI)  &kp SLASH     &kp DOT  ASH(SQT)  &kp COMMA  &kp QMARK
-                ASH(Q)  ASH(V)  ASH(F)     ASH(G)        ASH(B)   ASH(P)    ASH(K)     ASH(J)
-                               &moto NV NV  &kp CAPS     &cw  &tog NU 
+                ASH(Q)  ASH(X)  ASH(P)  ASH(K)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
+                ASH(Z)  ASH(V)  ASH(F)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
+                         &moto NV NV  &kp CAPS     &cw  &tog NU 
             >;
         };
 
         sym {
             bindings = <
-                &none      &kt LCTRL  &kt LGUI  &kt LALT              &kp LT        &kp PG_UP  &kp GT  &tog A1
-                &kp PSCRN  &kp C_VOL_DN  &kp C_MUTE  &kp C_VOL_UP     &kp C_BRI_DN  &kp PG_DN  &kp C_BRI_UP  &none 
-                                             &rls_mods  &kt LSHFT     &mosl FU FU  &tog SY
+                &none  &kt LCTRL  &kt LGUI  &kt LALT     &kp C_BRI_DN  &kp PG_UP  &kp C_BRI_UP  &tog A1
+                &none  &kp PSCRN  &none     &none        &kp C_VOL_DN  &kp PG_DN  &kp C_VOL_UP  &kp C_MUTE 
+                                &rls_mods  &kt LSHFT     &mosl FU FU  &tog SY
             >;
         };
 
