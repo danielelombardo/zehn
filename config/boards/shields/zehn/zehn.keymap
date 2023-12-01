@@ -8,13 +8,11 @@
 &lt { tapping-term-ms = <200>; };
 
 #define I1 0
-#define A1 1
-#define NU 2
-#define A2 3
-#define I2 4
-#define SY 5
-#define FU 6
-#define NV 7
+#define NU 1
+#define I2 2
+#define SY 3
+#define FU 4
+#define NV 5
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
@@ -41,18 +39,10 @@
     keymap {
         compatible = "zmk,keymap";
         isrt1 { 
-            bindings = <
-                ASH(W)  ASH(L)  ASH(D)  ASH(C)   ASH(H)  ASH(M)  ASH(O)  ASH(U) 
-                ASH(I)  ASH(S)  ASH(R)  ASH(T)   ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
+        bindings = <
+                ASH(W)  ASH(C)  ASH(L)  ASH(M)     ASH(H)  ASH(D)  ASH(O)  ASH(U) 
+                ASH(I)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
                       &mosl NV I2  &key_repeat     &mosl SY SY  &lt NU SPACE 
-            >;
-        };
-
-        abc1 {
-            bindings = <
-                ASH(W)  ASH(C)  ASH(E)  ASH(D)     ASH(Y)  ASH(M)  ASH(H)  ASH(L) 
-                ASH(A)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(I)  ASH(O)  ASH(U) 
-                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
@@ -64,25 +54,17 @@
             >;
          };
 
-        abc2 {
-             bindings = <
-                &kp SLASH  &kp COMMA  ASH(SQT)  ASH(X)     &kp QMARK  &kp DOT  ASH(SEMI)  ASH(Q) 
-                ASH(Z)     ASH(V)     ASH(F)    ASH(G)     ASH(B)     ASH(P)   ASH(K)     ASH(J)
-                                 &moto NV NV  &kp CAPS     &cw  &tog NU 
-            >;
-        };
-
         isrt2 {
              bindings = <
-                ASH(Q)  ASH(X)  ASH(K)  ASH(F)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
-                ASH(Z)  ASH(V)  ASH(P)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
+                ASH(Q)  ASH(V)  ASH(K)  ASH(X)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
+                ASH(Z)  ASH(F)  ASH(P)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
                          &moto NV NV  &kp CAPS     &cw  &tog NU 
             >;
         };
 
         sym {
             bindings = <
-                &none  &kt LCTRL  &kt LGUI  &kt LALT      &kp C_BRI_DN  &kp PG_UP  &kp C_BRI_UP  &tog A1
+                &none  &kt LCTRL  &kt LGUI  &kt LALT      &kp C_BRI_DN  &kp PG_UP  &kp C_BRI_UP  &none
                 &none  &tog NU    &tog FU   &kp PSCRN     &kp C_VOL_DN  &kp PG_DN  &kp C_VOL_UP  &kp C_MUTE 
                                  &rls_mods  &kt LSHFT     &mosl FU FU  &tog SY
             >;
@@ -98,9 +80,9 @@
 
         nav {
             bindings = <
-                &rls_mods  &sk LCTRL  &sk LGUI  &sk LALT     &kp HOME   &kp UP    &kp END    &kp INS 
-                &kp ESC    COPYUNDO  &kp SPACE  &kp TAB      &kp LEFT   &kp DOWN  &kp RIGHT  &kp ENTER 
-                                       &tog NV  PASTECUT     &sk LSHFT  &bkspdel 
+                &rls_mods  &sk LCTRL  &sk LGUI   &sk LALT     &kp HOME   &kp UP    &kp END    &kp INS 
+                &kp ESC    PASTECUT   &kp SPACE  &kp TAB      &kp LEFT   &kp DOWN  &kp RIGHT  &kp ENTER 
+                                        &tog NV  COPYUNDO     &sk LSHFT  &bkspdel 
             >;
         };
 
