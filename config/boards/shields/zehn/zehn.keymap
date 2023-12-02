@@ -7,9 +7,9 @@
 &sl { release-after-ms = <1000>; };
 &lt { tapping-term-ms = <200>; };
 
-#define I1 0
+#define A1 0
 #define NU 1
-#define I2 2
+#define A2 2
 #define SY 3
 #define FU 4
 #define NV 5
@@ -38,11 +38,11 @@
 
     keymap {
         compatible = "zmk,keymap";
-        isrt1 { 
+        abc1 { 
         bindings = <
-                ASH(W)  ASH(C)  ASH(L)  ASH(M)     ASH(H)  ASH(D)  ASH(O)  ASH(U) 
-                ASH(I)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
-                      &mosl NV I2  &key_repeat     &mosl SY SY  &lt NU SPACE 
+                ASH(W)  ASH(C)  ASH(L)  ASH(M)     ASH(H)  ASH(I)  ASH(O)  ASH(U) 
+                ASH(D)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(E)  ASH(A)  ASH(Y) 
+                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
             >;
         };
 
@@ -54,7 +54,7 @@
             >;
          };
 
-        isrt2 {
+        abc2 {
              bindings = <
                 ASH(Q)  ASH(V)  ASH(K)  ASH(X)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
                 ASH(Z)  ASH(F)  ASH(P)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
