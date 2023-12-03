@@ -23,8 +23,10 @@
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
             bindings = <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>; };
-        cw:       cw_on_sl { compatible = "zmk,behavior-macro"; label = "ZM_cw_on_sl";  #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
+        cw:       cw_on_sl { compatible = "zmk,behavior-macro"; label = "ZM_cw_on_sl"; #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
             bindings = <&macro_tap &caps_word &kp LSHFT>; }; 
+        moa2:     mom_a2   { compatible = "zmk,behavior-macro"; label = "ZM_mom_a2";   #binding-cells = <0>; wait-ms = <35>; tap-ms = <35>;
+            bindings = <&macro_tap &kp LSHFT>, <macro_press &mo A2>, <macro_pause_for_release>, <macro_release &mo A2r>; }; 
     };
 
     behaviors {
@@ -58,7 +60,7 @@
              bindings = <
                 ASH(Q)  ASH(V)  ASH(K)  ASH(X)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
                 ASH(Z)  ASH(F)  ASH(P)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
-                         &moto NV NV  &kp CAPS     &cw  &tog NU 
+                         &moto NV NV  &kp CAPS     &cw  &moa2 
             >;
         };
 
