@@ -16,16 +16,6 @@
 #define NV 5
 #define MOU 6
 
-#define U_MOUSE_MOVE_MAX 1000 /* max speed. default is 600 */
-#undef MOVE_UP
-#undef MOVE_DOWN
-#undef MOVE_LEFT
-#undef MOVE_RIGHT
-#define MOVE_UP MOVE_VERT(-U_MOUSE_MOVE_MAX)
-#define MOVE_DOWN MOVE_VERT(U_MOUSE_MOVE_MAX)
-#define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
-#define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
-
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
 #define COPYUNDO &tkp LG(Z) LG(C)
