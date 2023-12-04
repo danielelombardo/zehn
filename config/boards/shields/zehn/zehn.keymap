@@ -17,10 +17,14 @@
 #define MOU 6
 
 #define U_MOUSE_MOVE_MAX 1000 /* max speed. default is 600 */
-#define M_DOWN  MOVE_VERT(U_MOUSE_MOVE_MAX)
-#define M_UP    MOVE_VERT(-U_MOUSE_MOVE_MAX)
-#define M_LEFT  MOVE_HOR(-U_MOUSE_MOVE_MAX)
-#define M_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
+#undef MOVE_UP
+#undef MOVE_DOWN
+#undef MOVE_LEFT
+#undef MOVE_RIGHT
+#define MOVE_UP MOVE_VERT(-U_MOUSE_MOVE_MAX)
+#define MOVE_DOWN MOVE_VERT(U_MOUSE_MOVE_MAX)
+#define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
+#define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
@@ -98,8 +102,8 @@
 
         mou {
             bindings = <
-                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none        &mmv M_UP    &mkp RCLK     &none 
-                &none  &none      &none      &none        &mmv M_LEFT  &mmv M_DOWN  &mmv M_RIGHT  &none 
+                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none           &mmv MOVE_UP    &mkp RCLK     &none 
+                &none  &none      &none      &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none 
                                   &none      &sk LSHFT    &tog MOU  &mkp LCLK
             >;
         };
