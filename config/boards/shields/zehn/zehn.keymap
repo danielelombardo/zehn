@@ -16,10 +16,11 @@
 #define NV 5
 #define MOU 6
 
-#define M_DOWN  MOVE_DOWN
-#define M_UP    MOVE_UP
-#define M_LEFT  MOVE_LEFT
-#define M_RIGHT MOVE_RIGHT
+#define U_MOUSE_MOVE_MAX 1000 /* max speed. default is 600 */
+#define M_DOWN  MOVE_VERT(U_MOUSE_MOVE_MAX)
+#define M_UP    MOVE_VERT(-U_MOUSE_MOVE_MAX)
+#define M_LEFT  MOVE_HOR(-U_MOUSE_MOVE_MAX)
+#define M_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
@@ -97,9 +98,9 @@
 
         mou {
             bindings = <
-                &none  &none  &none  &none     &mkp LCLK    &mmv M_UP    &mkp RCLK     &none 
+                &none  &none  &none  &none     &none        &mmv M_UP    &mkp RCLK     &none 
                 &none  &none  &none  &none     &mmv M_LEFT  &mmv M_DOWN  &mmv M_RIGHT  &none 
-                              &none  &none     &none  &tog MOU 
+                              &none  &none     &tog MOU  &mkp LCLK
             >;
         };
     };
