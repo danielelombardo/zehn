@@ -31,6 +31,19 @@
 #define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
 
+#define U_MOUSE_SCROLL_MAX 100 /* <--- New max speed setting (default: 10) */
+#undef SCROLL_UP
+#undef SCROLL_DOWN
+#undef SCROLL_LEFT
+#undef SCROLL_RIGHT
+#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
+#define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
+#define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
+#define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
+
+&mmv { acceleration-exponent=<1>; };
+&mwh { acceleration-exponent=<1>; };
+
 / {
     macros {
         rls_mods: rls_mods { compatible = "zmk,behavior-macro"; label = "ZM_rls_mods"; #binding-cells = <0>; wait-ms = <5>; tap-ms = <15>;
@@ -47,7 +60,11 @@
         mokr: mom_key_rep  { compatible = "zmk,behavior-hold-tap"; label = "MOM_KEY_REP";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&key_repeat>; }; 
         tkp:  two_kp       { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <210>; bindings = <&kp>, <&kp>; }; 
 
-        bkspdel: back_del  { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>,  <&kp DEL>;   mods = <(MOD_LSFT)>; }; 
+        bkspdel: back_del  { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
+        msup:    ms_up     { compatible = "zmk,behavior-mod-morph"; label = "MS_UP";      #binding-cells = <0>; bindings = <&mmv MOVE_UP>, <&mwh SCROLL_UP>; mods = <(MOD_RSFT)>; }; 
+        msdown:  ms_down   { compatible = "zmk,behavior-mod-morph"; label = "MS_DOWN";    #binding-cells = <0>; bindings = <&mmv MOVE_DOWN>, <&mwh SCROLL_DOWN>; mods = <(MOD_RSFT)>; }; 
+        msleft:  ms_left   { compatible = "zmk,behavior-mod-morph"; label = "MS_LEFT";    #binding-cells = <0>; bindings = <&mmv MOVE_LEFT>, <&mwh SCROLL_LEFT>; mods = <(MOD_RSFT)>; }; 
+        msright: ms_right  { compatible = "zmk,behavior-mod-morph"; label = "MS_RIGHT";   #binding-cells = <0>; bindings = <&mmv MOVE_RIGHT>, <&mwh SCROLL_RIGHT>; mods = <(MOD_RSFT)>; }; 
     };
 
     keymap {
@@ -70,9 +87,9 @@
 
         abc2 {
              bindings = <
-                ASH(Q)  ASH(V)  ASH(K)  ASH(X)     ASH(J)  ASH(SEMI)  &kp SLASH   &kp QMARK 
-                ASH(Z)  ASH(F)  ASH(P)  ASH(G)     ASH(B)  ASH(SQT)   ASH(COMMA)  ASH(DOT) 
-                         &moto NV NV  &kp CAPS     &cw  &moa2 
+                &kp SLASH  ASH(Z)      ASH(V)    ASH(X)       ASH(J)  ASH(G)  ASH(F)  ASH(Q) 
+                ASH(SEMI)  ASH(COMMA)  ASH(SQT)  ASH(DOT)     ASH(B)  ASH(P)  ASH(K)  &kp QMARK 
+                                       &moto NV NV  &kp CAPS  &cw  &moa2
             >;
         };
 
@@ -102,9 +119,9 @@
 
         mou {
             bindings = <
-                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none           &mmv MOVE_UP    &mkp RCLK     &none 
-                &none  &none      &none      &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none 
-                                  &none      &sk LSHFT    &tog MOU  &mkp LCLK
+                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none     &ms_up    &none      &none 
+                &none  &none      &none      &none        &ms_left  &ms_down  &ms_right  &kt RSHFT 
+                                  &tog MOU   &sk LSHFT    &mkp RCLK  &mkp LCLK 
             >;
         };
     };
