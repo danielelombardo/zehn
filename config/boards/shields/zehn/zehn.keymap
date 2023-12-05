@@ -15,6 +15,7 @@
 #define FU 4
 #define NV 5
 #define MOU 6
+#define SCR 7
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
@@ -31,18 +32,18 @@
 #define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
 
-#define U_MOUSE_SCROLL_MAX 100 /* <--- New max speed setting (default: 10) */
+#define U_MOUSE_SCROLL_MAX 20 /* <--- New max speed setting (default: 10) */
 #undef SCROLL_UP
 #undef SCROLL_DOWN
 #undef SCROLL_LEFT
 #undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
-#define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
+#define SCROLL_UP SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
+#define SCROLL_DOWN SCROLL_VERT(U_MOUSE_SCROLL_MAX)
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
 &mmv { acceleration-exponent=<1>; };
-&mwh { acceleration-exponent=<1>; };
+&mwh { acceleration-exponent=<0>; };
 
 / {
     macros {
@@ -61,10 +62,6 @@
         tkp:  two_kp       { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <210>; bindings = <&kp>, <&kp>; }; 
 
         bkspdel: back_del  { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
-        msup:    ms_up     { compatible = "zmk,behavior-mod-morph"; label = "MS_UP";      #binding-cells = <0>; bindings = <&mmv MOVE_UP>, <&mwh SCROLL_UP>; mods = <(MOD_RSFT)>; }; 
-        msdown:  ms_down   { compatible = "zmk,behavior-mod-morph"; label = "MS_DOWN";    #binding-cells = <0>; bindings = <&mmv MOVE_DOWN>, <&mwh SCROLL_DOWN>; mods = <(MOD_RSFT)>; }; 
-        msleft:  ms_left   { compatible = "zmk,behavior-mod-morph"; label = "MS_LEFT";    #binding-cells = <0>; bindings = <&mmv MOVE_LEFT>, <&mwh SCROLL_LEFT>; mods = <(MOD_RSFT)>; }; 
-        msright: ms_right  { compatible = "zmk,behavior-mod-morph"; label = "MS_RIGHT";   #binding-cells = <0>; bindings = <&mmv MOVE_RIGHT>, <&mwh SCROLL_RIGHT>; mods = <(MOD_RSFT)>; }; 
     };
 
     keymap {
@@ -119,9 +116,17 @@
 
         mou {
             bindings = <
-                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none    &msup    &none     &none 
-                &none  &none      &none      &none        &msleft  &msdown  &msright  &kt RSHFT 
-                                  &tog MOU   &sk LSHFT    &mkp RCLK  &mkp LCLK 
+                &none  &sk LCTRL  &sk LGUI  &sk LALT     &none           &mmv MOVE_UP    &none            &none 
+                &none  PASTECUT   COPYUNDO  &kp TAB      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &tog SCR 
+                                  &tog MOU  &sk LSHFT    &mkp RCLK  &mkp LCLK 
+            >;
+        };
+
+        scr {
+            bindings = <
+                &none  &trans  &trans  &trans     &none             &mwh SCROLL_UP    &none              &none 
+                &none  &trans  &trans  &trans     &mwh SCROLL_LEFT  &mwh SCROLL_DOWN  &mwh SCROLL_RIGHT  &trans 
+                               &trans  &trans     &none  &tog SCR 
             >;
         };
     };
