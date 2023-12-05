@@ -119,8 +119,8 @@
 
         mou {
             bindings = <
-                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none     &ms_up    &none      &none 
-                &none  &none      &none      &none        &ms_left  &ms_down  &ms_right  &kt RSHFT 
+                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none    &msup    &none     &none 
+                &none  &none      &none      &none        &msleft  &msdown  &msright  &kt RSHFT 
                                   &tog MOU   &sk LSHFT    &mkp RCLK  &mkp LCLK 
             >;
         };
