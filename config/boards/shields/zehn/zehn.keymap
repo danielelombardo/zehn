@@ -19,8 +19,7 @@
 
 #define ASH(l) &tkp LS(l) l
 #define BT(d) &bt BT_SEL d
-#define COPYUNDO &tkp LG(Z) LG(C)
-#define PASTECUT &tkp LG(X) LG(V)
+#define COPYPASTE &tkp LG(C) LG(V)
 
 #define U_MOUSE_MOVE_MAX 1000 /* max speed. default is 600 */
 #undef MOVE_UP
@@ -57,9 +56,11 @@
 
     behaviors {
         mosl: moml_1shot_l { compatible = "zmk,behavior-hold-tap"; label = "MOML_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&sl>; }; 
+        tosl: togl_1shot_l { compatible = "zmk,behavior-hold-tap"; label = "TOGL_1SHOT_L"; #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&tog>, <&sl>; }; 
+        mokp: moml_kp      { compatible = "zmk,behavior-hold-tap"; label = "MOML_KP";      #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&kp>; }; 
         moto: mom_tog_l    { compatible = "zmk,behavior-hold-tap"; label = "MOM_TOG_L";    #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&tog>; }; 
         mokr: mom_key_rep  { compatible = "zmk,behavior-hold-tap"; label = "MOM_KEY_REP";  #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&mo>, <&key_repeat>; }; 
-        tkp:  two_kp       { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <210>; bindings = <&kp>, <&kp>; }; 
+        tkp:  two_kp       { compatible = "zmk,behavior-hold-tap"; label = "TWO_KP";       #binding-cells = <2>; flavor = "tap-preferred"; tapping-term-ms = <200>; bindings = <&kp>, <&kp>; }; 
 
         bkspdel: back_del  { compatible = "zmk,behavior-mod-morph"; label = "BACK_DEL";   #binding-cells = <0>; bindings = <&kp BKSP>, <&kp DEL>; mods = <(MOD_LSFT)>; }; 
     };
@@ -70,7 +71,7 @@
         bindings = <
                 ASH(W)  ASH(C)  ASH(H)  ASH(M)     ASH(U)  ASH(I)  ASH(O)  ASH(Y) 
                 ASH(D)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(E)  ASH(A)  ASH(L) 
-                      &mosl NV A2  &key_repeat     &mosl SY SY  &lt NU SPACE 
+                   &mokp NV SPACE  &key_repeat     &mosl SY SY  &tosl NU A2 
             >;
         };
 
@@ -84,9 +85,9 @@
 
         abc2 {
              bindings = <
-                &kp SLASH  ASH(Z)      ASH(V)    ASH(X)       ASH(J)  ASH(G)  ASH(F)  ASH(Q) 
-                ASH(SEMI)  ASH(COMMA)  ASH(SQT)  ASH(DOT)     ASH(B)  ASH(P)  ASH(K)  &kp QMARK 
-                                       &moto NV NV  &kp CAPS  &cw  &moa2
+                ASH(Q)  ASH(Z)  ASH(V)  ASH(X)     ASH(F)  ASH(SQT)   ASH(DOT)    &tog MOU
+                ASH(J)  ASH(B)  ASH(K)  ASH(P)     ASH(G)  ASH(SEMI)  ASH(COMMA)  ASH(SLASH) 
+                         &moto NV NV  &kp CAPS     &cw  &moa2
             >;
         };
 
@@ -109,16 +110,16 @@
         nav {
             bindings = <
                 &rls_mods  &sk LCTRL  &sk LGUI   &sk LALT     &kp HOME   &kp UP    &kp END    &kp INS 
-                &kp ESC    PASTECUT   &kp SPACE  &kp TAB      &kp LEFT   &kp DOWN  &kp RIGHT  &kp ENTER 
-                                        &tog NV  COPYUNDO     &sk LSHFT  &bkspdel 
+                &sl A2     &kp ESC    &kp SPACE  &kp TAB      &kp LEFT   &kp DOWN  &kp RIGHT  &kp ENTER 
+                                        &tog NV  COPYPASTE    &sk LSHFT  &bkspdel 
             >;
         };
 
         mou {
             bindings = <
-                &none  &sk LCTRL  &sk LGUI  &sk LALT     &none           &mmv MOVE_UP    &none            &none 
-                &none  PASTECUT   COPYUNDO  &kp TAB      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &tog SCR 
-                                  &tog MOU  &sk LSHFT    &mkp RCLK  &mkp LCLK 
+                &none  &sk LCTRL  &sk LGUI   &sk LALT     &none           &mmv MOVE_UP    &none            &none 
+                &none  &kp ESC    COPYPASTE  &kp TAB      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &tog SCR 
+                                  &tog MOU  &sk LSHFT     &mkp RCLK  &mkp LCLK 
             >;
         };
 
