@@ -36,10 +36,10 @@
 #undef SCROLL_DOWN
 #undef SCROLL_LEFT
 #undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
-#define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
+#define SCROLL_UP SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
+#define SCROLL_DOWN SCROLL_VERT(U_MOUSE_SCROLL_MAX)
+#define SCROLL_LEFT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
+#define SCROLL_RIGHT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 
 &mmv { acceleration-exponent=<1>; };
 &mwh { acceleration-exponent=<1>; };
@@ -71,30 +71,30 @@
         bindings = <
                 ASH(W)  ASH(C)  ASH(H)  ASH(M)     ASH(U)  ASH(I)  ASH(O)  ASH(Y) 
                 ASH(D)  ASH(S)  ASH(R)  ASH(T)     ASH(N)  ASH(E)  ASH(A)  ASH(L) 
-                   &mokp NV SPACE  &key_repeat     &mosl SY SY  &tosl NU A2 
+                   &mokp NV SPACE  &key_repeat     &mosl SY SY  &mosl NU A2 
             >;
         };
 
         num {
             bindings = <
-                ASH(RBKT)  ASH(N4)  ASH(N5)  ASH(N6)     ASH(MINUS)  ASH(EQUAL)  ASH(N0)  ASH(GRAVE) 
-                ASH(LBKT)  ASH(N1)  ASH(N2)  ASH(N3)     ASH(N7)     ASH(N8)     ASH(N9)  ASH(BSLH) 
+                ASH(RBKT)  ASH(N6)  ASH(N5)  ASH(N4)     ASH(MINUS)  ASH(EQUAL)  ASH(N0)  ASH(GRAVE) 
+                ASH(LBKT)  ASH(N3)  ASH(N2)  ASH(N1)     ASH(N7)     ASH(N8)     ASH(N9)  ASH(BSLH) 
                                       &trans  &trans     &trans  &tog NU 
             >;
          };
 
         abc2 {
              bindings = <
-                ASH(Q)  ASH(Z)  ASH(V)  ASH(X)     ASH(F)  ASH(SQT)   ASH(DOT)    &tog MOU
-                ASH(J)  ASH(B)  ASH(K)  ASH(P)     ASH(G)  ASH(SEMI)  ASH(COMMA)  ASH(SLASH) 
+                ASH(Q)  ASH(Z)  ASH(V)  ASH(X)     ASH(F)  ASH(SQT)   ASH(DOT)    ASH(SLASH) 
+                ASH(J)  ASH(B)  ASH(K)  ASH(P)     ASH(G)  ASH(SEMI)  ASH(COMMA)  &tog MOU 
                          &moto NV NV  &kp CAPS     &cw  &moa2
             >;
         };
 
         sym {
             bindings = <
-                &none  &kt LCTRL  &kt LGUI  &kt LALT      &kp C_BRI_DN  &kp PG_UP  &kp C_BRI_UP  &tog MOU 
-                &none  &tog NU    &tog FU   &kp PSCRN     &kp C_VOL_DN  &kp PG_DN  &kp C_VOL_UP  &kp C_MUTE 
+                &none  &kt LCTRL  &kt LGUI  &kt LALT      &kp C_VOL_DN  &kp PG_UP  &kp C_VOL_UP  &kp C_MUTE 
+                &none  &tog NU    &tog FU   &kp PSCRN     &kp C_BRI_DN  &kp PG_DN  &kp C_BRI_UP  &tog MOU 
                                  &rls_mods  &kt LSHFT     &mosl FU FU  &tog SY
             >;
         };
@@ -127,7 +127,7 @@
             bindings = <
                 &none  &trans  &trans  &trans     &none             &mwh SCROLL_UP    &none              &none 
                 &none  &trans  &trans  &trans     &mwh SCROLL_LEFT  &mwh SCROLL_DOWN  &mwh SCROLL_RIGHT  &trans 
-                               &trans  &trans     &none  &tog SCR 
+                             &tog SCR  &trans     &none  &tog SCR 
             >;
         };
     };
