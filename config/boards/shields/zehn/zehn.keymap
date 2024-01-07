@@ -21,7 +21,7 @@
 #define BT(d) &bt BT_SEL d
 #define COPYPASTE &tkp LG(C) LG(V)
 
-#define U_MOUSE_MOVE_MAX 1000 /* max speed. default is 600 */
+#define U_MOUSE_MOVE_MAX 1200 /* max speed. default is 600 */
 #undef MOVE_UP
 #undef MOVE_DOWN
 #undef MOVE_LEFT
@@ -31,7 +31,7 @@
 #define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
 
-#define U_MOUSE_SCROLL_MAX 30 /* <--- New max speed setting (default: 10) */
+#define U_MOUSE_SCROLL_MAX 20 /* <--- New max speed setting (default: 10) */
 #undef SCROLL_UP
 #undef SCROLL_DOWN
 #undef SCROLL_LEFT
@@ -41,7 +41,7 @@
 #define SCROLL_LEFT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 
-&mmv { acceleration-exponent=<1>; };
+&mmv { acceleration-exponent=<1>; time-to-max-speed-ms = <1500>;};
 &mwh { acceleration-exponent=<1>; };
 
 / {
