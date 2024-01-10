@@ -41,8 +41,8 @@
 #define SCROLL_LEFT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 
-&mmv { acceleration-exponent=<1>; time-to-max-speed-ms = <1500>;};
-&mwh { acceleration-exponent=<1>; };
+&mmv { acceleration-exponent=<2>; time-to-max-speed-ms = <1500>;};
+&mwh { acceleration-exponent=<1>; time-to-max-speed-ms = <1500>;};
 
 / {
     macros {
